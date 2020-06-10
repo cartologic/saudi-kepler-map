@@ -22,10 +22,9 @@ const Map = () => {
   const dispatch = useDispatch();
 
   // The data thats is used here is just a test for running kepler and won't be used in the future.
-  const regionsEndpoint = "http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0"
 
   const {data} = useSWR("covid", async () => {
-    const response = await fetch(regionsEndpoint);
+    const response = await fetch("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0");
 
     const data_json = await response.json();
     const data = Processors.processGeojson(data_json)
