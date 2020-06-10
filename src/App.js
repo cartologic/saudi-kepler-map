@@ -7,6 +7,7 @@ import { Provider, useDispatch } from "react-redux"
 import KeplerGl from "kepler.gl"
 import keplerGlReducer from "kepler.gl/reducers"
 import { addDataToMap } from "kepler.gl/actions"
+import Processors from "kepler.gl/processors"
 // For fetching the data from API and solving the memoizing issue.
 import useSWR from "swr";
 
@@ -21,13 +22,13 @@ const Map = () => {
   const dispatch = useDispatch();
 
   // The data thats is used here is just a test for running kepler and won't be used in the future.
+  const regionsEndpoint = "http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0"
+
   const {data} = useSWR("covid", async () => {
-    const response = await fetch("https://gist.githubusercontent.com/MoRadwan74/5a175f3e24c5cf770e763b71c1da6195/raw/03fc7354e03fcccb7aa015d3618a442d51c64741/covid19.json");
+    const response = await fetch(regionsEndpoint);
 
-    // http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0
-
-    //https://gist.githubusercontent.com/MoRadwan74/5a175f3e24c5cf770e763b71c1da6195/raw/03fc7354e03fcccb7aa015d3618a442d51c64741/covid19.json
-    const data = await response.json();
+    const data_json = await response.json();
+    const data = Processors.processGeojson(data_json)
     return data;
   });
 
@@ -37,7 +38,7 @@ const Map = () => {
         addDataToMap({
           datasets: {
             info: {
-              label: 'Saudi COVID-19',
+              label: 'Saudi Regions',
               id: 'covid'
             },
             data: data
