@@ -1,5 +1,5 @@
 // React and Redux
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { createStore, combineReducers, applyMiddleware } from "redux"
 import { taskMiddleware } from "react-palm/tasks"
 import { Provider, useDispatch } from "react-redux"
@@ -9,7 +9,7 @@ import keplerGlReducer from "kepler.gl/reducers"
 import { addDataToMap } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
 // For fetching the data from API and solving the memoizing issue.
-import useSWR from "swr";
+import axios from "axios";
 
 
 const reducers = combineReducers({
@@ -19,28 +19,44 @@ const reducers = combineReducers({
 const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
 
 const Map = () => {
+  const [regionsData, setRegionsData] = useState([]);
+  const [governatesData, setGovernatesData] = useState([]);
   const dispatch = useDispatch();
 
-  // The data thats is used here is just a test for running kepler and won't be used in the future.
-
-  const {data} = useSWR("covid", async () => {
-    const response = await fetch("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0");
-
-    const data_json = await response.json();
-    const data = Processors.processGeojson(data_json)
-    return data;
-  });
-
+  // Fetch Saudi regions & governates data
   useEffect(() => {
-    if (data){
+    // The data thats is used here is just a test for running kepler and won't be used in the future.
+    const requestregions = axios.get("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0")
+    
+    const requestGovernates = axios.get("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Asagov&version=1.0.0")
+
+    axios.all([requestregions, requestGovernates])
+    .then(axios.spread((...responses) => {
+      const regionsData = responses[0].data
+      const governatesData = responses[1].data
+
+      const validRegionsData = Processors.processGeojson(regionsData)
+      const validGovernatesData = Processors.processGeojson(governatesData)
+
+      setRegionsData(validRegionsData)
+      setGovernatesData(validGovernatesData)
+      console.log(regionsData)
+      }
+    ))
+  }, [])
+
+
+  // Add Saudi regions to Kepler's map
+  useEffect(() => {
+    if (regionsData){
       dispatch(
         addDataToMap({
           datasets: {
             info: {
               label: 'Saudi Regions',
-              id: 'covid'
+              id: 'covidRegions'
             },
-            data: data
+            data: regionsData
           },
           option: {
             centerMap: true,
@@ -50,7 +66,29 @@ const Map = () => {
         })
       );
     }
-  }, [dispatch, data])
+  }, [dispatch, regionsData])
+
+  // Add Saudi governates to Kepler's map
+  useEffect(() => {
+    if (governatesData){
+      dispatch(
+        addDataToMap({
+          datasets: {
+            info: {
+              label: 'Saudi Governates',
+              id: 'covidGovernates'
+            },
+            data: governatesData
+          },
+          option: {
+            centerMap: true,
+            readOnly: false
+          },
+          config: {}
+        })
+      );
+    }
+  }, [dispatch, governatesData])
 
 
   return (
