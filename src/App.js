@@ -10,7 +10,8 @@ import { addDataToMap } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
 // For fetching the data from API and solving the memoizing issue.
 import axios from "axios";
-
+// Map configurations
+import mapConfig from "./data/config.json";
 
 const reducers = combineReducers({
   keplerGl: keplerGlReducer
@@ -70,7 +71,7 @@ const Map = () => {
             centerMap: true,
             readOnly: false
           },
-          config: {}
+          config: mapConfig
         })
       );
     }
