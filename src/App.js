@@ -25,7 +25,6 @@ const Map = () => {
 
   // Fetch Saudi regions & governates data
   useEffect(() => {
-    // The data thats is used here is just a test for running kepler and won't be used in the future.
     const requestregions = axios.get("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0")
     
     const requestGovernates = axios.get("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Asagov&version=1.0.0")
@@ -46,18 +45,27 @@ const Map = () => {
   }, [])
 
 
-  // Add Saudi regions to Kepler's map
+  // Add Saudi regions & governates to Kepler's map
   useEffect(() => {
-    if (regionsData){
+    if (regionsData && governatesData){
       dispatch(
         addDataToMap({
-          datasets: {
-            info: {
-              label: 'Saudi Regions',
-              id: 'covidRegions'
+          datasets: [
+            {
+              info: {
+                label: 'Saudi Regions',
+                id: 'covidRegions'
+              },
+              data: regionsData
             },
-            data: regionsData
-          },
+            {
+              info: {
+                label: 'Saudi Governates',
+                id: 'covidGovernates'
+              },
+              data: governatesData
+            }
+          ],
           option: {
             centerMap: true,
             readOnly: false
@@ -66,30 +74,7 @@ const Map = () => {
         })
       );
     }
-  }, [dispatch, regionsData])
-
-  // Add Saudi governates to Kepler's map
-  useEffect(() => {
-    if (governatesData){
-      dispatch(
-        addDataToMap({
-          datasets: {
-            info: {
-              label: 'Saudi Governates',
-              id: 'covidGovernates'
-            },
-            data: governatesData
-          },
-          option: {
-            centerMap: true,
-            readOnly: false
-          },
-          config: {}
-        })
-      );
-    }
-  }, [dispatch, governatesData])
-
+  }, [dispatch, regionsData, governatesData])
 
   return (
     <KeplerGl
