@@ -8,9 +8,8 @@ import { injectComponents, LoadDataModalFactory } from "kepler.gl/components"
 import keplerGlReducer from "kepler.gl/reducers"
 import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
-// For fetching the data from API and solving the memoizing issue.
+// Other imports
 import axios from "axios";
-// Map configurations
 import mapConfig from "./data/config.json";
 import LoadingDialog from "./components/LoadingDialog"
 
@@ -50,7 +49,6 @@ const Map = () => {
 
       setRegionsData(validRegionsData)
       setGovernatesData(validGovernatesData)
-      console.log(regionsData)
       }
     ))
   }, [])
