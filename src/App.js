@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux"
 import { taskMiddleware } from "react-palm/tasks"
 import { Provider, useDispatch } from "react-redux"
 // Kepler required libraries
-import KeplerGl from "kepler.gl"
+import { injectComponents, LoadDataModalFactory } from "kepler.gl/components"
 import keplerGlReducer from "kepler.gl/reducers"
 import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
@@ -12,6 +12,15 @@ import Processors from "kepler.gl/processors"
 import axios from "axios";
 // Map configurations
 import mapConfig from "./data/config.json";
+import LoadingDialog from "./components/LoadingDialog"
+
+
+const CustomLoadingModal = () => (<LoadingDialog />)
+const customLoadingModalFactory = () => CustomLoadingModal;
+
+const KeplerGl = injectComponents([
+  [LoadDataModalFactory, customLoadingModalFactory]
+])
 
 const reducers = combineReducers({
   keplerGl: keplerGlReducer
@@ -22,6 +31,7 @@ const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
 const Map = () => {
   const [regionsData, setRegionsData] = useState([]);
   const [governatesData, setGovernatesData] = useState([]);
+  const [mapUpdated, setMapUpdated] = useState(false);
   const dispatch = useDispatch();
 
   // Fetch Saudi regions & governates data
@@ -76,17 +86,18 @@ const Map = () => {
       );
       // If map is exported as JSON, export it without the dataset
       dispatch(setExportData(false));
+      setMapUpdated(true);
     }
   }, [dispatch, regionsData, governatesData])
 
   return (
-    <KeplerGl
+    mapUpdated ? <KeplerGl
       id="covid"
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
       width={window.innerWidth}
       height={window.innerHeight}
       appName="Saudi COVID-19"
-    />
+    /> : <h1> </h1>
   )
 }
 
