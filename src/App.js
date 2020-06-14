@@ -6,7 +6,7 @@ import { Provider, useDispatch } from "react-redux"
 // Kepler required libraries
 import KeplerGl from "kepler.gl"
 import keplerGlReducer from "kepler.gl/reducers"
-import { addDataToMap } from "kepler.gl/actions"
+import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
 // For fetching the data from API and solving the memoizing issue.
 import axios from "axios";
@@ -74,6 +74,8 @@ const Map = () => {
           config: mapConfig
         })
       );
+      // If map is exported as JSON, export it without the dataset
+      dispatch(setExportData(false));
     }
   }, [dispatch, regionsData, governatesData])
 
