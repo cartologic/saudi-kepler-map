@@ -5,111 +5,6 @@
         "filters": [],
         "layers": [
           {
-            "id": "asmp5or",
-            "type": "geojson",
-            "config": {
-              "dataId": "covidGovernates",
-              "label": "Saudi Governates",
-              "color": [
-                130,
-                154,
-                227
-              ],
-              "columns": {
-                "geojson": "_geojson"
-              },
-              "isVisible": true,
-              "visConfig": {
-                "opacity": 0.8,
-                "strokeOpacity": 0.8,
-                "thickness": 0.5,
-                "strokeColor": [
-                  34,
-                  63,
-                  154
-                ],
-                "colorRange": {
-                  "name": "Global Warming",
-                  "type": "sequential",
-                  "category": "Uber",
-                  "colors": [
-                    "#FFC300",
-                    "#F1920E",
-                    "#E3611C",
-                    "#C70039",
-                    "#900C3F",
-                    "#5A1846"
-                  ],
-                  "reversed": true
-                },
-                "strokeColorRange": {
-                  "name": "Global Warming",
-                  "type": "sequential",
-                  "category": "Uber",
-                  "colors": [
-                    "#5A1846",
-                    "#900C3F",
-                    "#C70039",
-                    "#E3611C",
-                    "#F1920E",
-                    "#FFC300"
-                  ]
-                },
-                "radius": 10,
-                "sizeRange": [
-                  0,
-                  10
-                ],
-                "radiusRange": [
-                  0,
-                  50
-                ],
-                "heightRange": [
-                  0,
-                  500
-                ],
-                "elevationScale": 5,
-                "stroked": true,
-                "filled": true,
-                "enable3d": false,
-                "wireframe": false
-              },
-              "hidden": false,
-              "textLabel": [
-                {
-                  "field": null,
-                  "color": [
-                    255,
-                    255,
-                    255
-                  ],
-                  "size": 18,
-                  "offset": [
-                    0,
-                    0
-                  ],
-                  "anchor": "start",
-                  "alignment": "center"
-                }
-              ]
-            },
-            "visualChannels": {
-              "colorField": {
-                "name": "TotalConfi",
-                "type": "integer"
-              },
-              "colorScale": "quantile",
-              "sizeField": null,
-              "sizeScale": "linear",
-              "strokeColorField": null,
-              "strokeColorScale": "quantile",
-              "heightField": null,
-              "heightScale": "linear",
-              "radiusField": null,
-              "radiusScale": "linear"
-            }
-          },
-          {
             "id": "u7sb1m",
             "type": "geojson",
             "config": {
@@ -201,6 +96,111 @@
             "visualChannels": {
               "colorField": {
                 "name": "TotalActiv",
+                "type": "integer"
+              },
+              "colorScale": "quantile",
+              "sizeField": null,
+              "sizeScale": "linear",
+              "strokeColorField": null,
+              "strokeColorScale": "quantile",
+              "heightField": null,
+              "heightScale": "linear",
+              "radiusField": null,
+              "radiusScale": "linear"
+            }
+          },
+          {
+            "id": "asmp5or",
+            "type": "geojson",
+            "config": {
+              "dataId": "covidGovernates",
+              "label": "Saudi Governates",
+              "color": [
+                130,
+                154,
+                227
+              ],
+              "columns": {
+                "geojson": "_geojson"
+              },
+              "isVisible": true,
+              "visConfig": {
+                "opacity": 0.8,
+                "strokeOpacity": 0.8,
+                "thickness": 0.5,
+                "strokeColor": [
+                  34,
+                  63,
+                  154
+                ],
+                "colorRange": {
+                  "name": "Global Warming",
+                  "type": "sequential",
+                  "category": "Uber",
+                  "colors": [
+                    "#FFC300",
+                    "#F1920E",
+                    "#E3611C",
+                    "#C70039",
+                    "#900C3F",
+                    "#5A1846"
+                  ],
+                  "reversed": true
+                },
+                "strokeColorRange": {
+                  "name": "Global Warming",
+                  "type": "sequential",
+                  "category": "Uber",
+                  "colors": [
+                    "#5A1846",
+                    "#900C3F",
+                    "#C70039",
+                    "#E3611C",
+                    "#F1920E",
+                    "#FFC300"
+                  ]
+                },
+                "radius": 10,
+                "sizeRange": [
+                  0,
+                  10
+                ],
+                "radiusRange": [
+                  0,
+                  50
+                ],
+                "heightRange": [
+                  0,
+                  500
+                ],
+                "elevationScale": 5,
+                "stroked": true,
+                "filled": true,
+                "enable3d": false,
+                "wireframe": false
+              },
+              "hidden": false,
+              "textLabel": [
+                {
+                  "field": null,
+                  "color": [
+                    255,
+                    255,
+                    255
+                  ],
+                  "size": 18,
+                  "offset": [
+                    0,
+                    0
+                  ],
+                  "anchor": "start",
+                  "alignment": "center"
+                }
+              ]
+            },
+            "visualChannels": {
+              "colorField": {
+                "name": "TotalConfi",
                 "type": "integer"
               },
               "colorScale": "quantile",
