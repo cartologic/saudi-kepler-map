@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux"
 import { taskMiddleware } from "react-palm/tasks"
 import { Provider, useDispatch } from "react-redux"
 // Kepler required libraries
-import { injectComponents, LoadDataModalFactory } from "kepler.gl/components"
+import { injectComponents, LoadDataModalFactory, AddDataButtonFactory } from "kepler.gl/components"
 import keplerGlReducer from "kepler.gl/reducers"
 import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
@@ -17,8 +17,13 @@ import LoadingDialog from "./components/LoadingDialog"
 const CustomLoadingModal = () => (<LoadingDialog />)
 const customLoadingModalFactory = () => CustomLoadingModal;
 
+// TODO: Use the normal "Add data" button again when loading modal fixed.
+const CustomDataBtn = () => (<></>)
+const customDataBtnFactory = () => CustomDataBtn;
+
 const KeplerGl = injectComponents([
-  [LoadDataModalFactory, customLoadingModalFactory]
+  [LoadDataModalFactory, customLoadingModalFactory],
+  [AddDataButtonFactory, customDataBtnFactory]
 ])
 
 const reducers = combineReducers({
