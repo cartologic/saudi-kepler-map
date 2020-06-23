@@ -99,7 +99,8 @@ const Map = () => {
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
       width={window.innerWidth}
       height={window.innerHeight}
-      appName="Saudi COVID-19"
+      appName="Kepler | COVID-19 KSA"
+      version="1.0"
     /> : <h1> </h1>
   )
 }
