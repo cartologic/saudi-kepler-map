@@ -26,8 +26,15 @@ const KeplerGl = injectComponents([
   [AddDataButtonFactory, customDataBtnFactory]
 ])
 
+const customKeplerGlReducer = keplerGlReducer.initialState({
+  uiState: {
+    // Hide side panel when mounted
+    activeSidePanel: null
+  }
+})
+
 const reducers = combineReducers({
-  keplerGl: keplerGlReducer
+  keplerGl: customKeplerGlReducer
 });
 
 const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
@@ -81,8 +88,7 @@ const Map = () => {
             }
           ],
           option: {
-            centerMap: true,
-            readOnly: false
+            centerMap: true
           },
           config: mapConfig
         })
