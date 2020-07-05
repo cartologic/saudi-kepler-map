@@ -2,28 +2,21 @@
 import React, {useState, useEffect} from 'react';
 import { Provider, useDispatch } from "react-redux"
 // Kepler required libraries
-import { injectComponents, LoadDataModalFactory, AddDataButtonFactory } from "kepler.gl/components"
+import { injectComponents } from "kepler.gl/components"
 import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
 // Other imports
 import axios from "axios";
 import mapConfig from "./data/config.json";
-import LoadingDialog from "./components/LoadingDialog"
 import store from "./store"
+import { replaceLoadDataModal } from "./factories/load-data-modal"
+import { replaceAddDataBtn } from "./factories/add-data-button"
 
-
-const CustomLoadingModal = () => (<LoadingDialog />)
-const customLoadingModalFactory = () => CustomLoadingModal;
-
-// TODO: Use the normal "Add data" button again when loading modal fixed.
-const CustomDataBtn = () => (<></>)
-const customDataBtnFactory = () => CustomDataBtn;
 
 const KeplerGl = injectComponents([
-  [LoadDataModalFactory, customLoadingModalFactory],
-  [AddDataButtonFactory, customDataBtnFactory]
+  replaceLoadDataModal(),
+  replaceAddDataBtn()
 ])
-
 
 const Map = () => {
   const [regionsData, setRegionsData] = useState([]);
