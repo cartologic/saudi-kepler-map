@@ -1,17 +1,15 @@
 // React and Redux
 import React, {useState, useEffect} from 'react';
-import { createStore, combineReducers, applyMiddleware } from "redux"
-import { taskMiddleware } from "react-palm/tasks"
 import { Provider, useDispatch } from "react-redux"
 // Kepler required libraries
 import { injectComponents, LoadDataModalFactory, AddDataButtonFactory } from "kepler.gl/components"
-import keplerGlReducer from "kepler.gl/reducers"
 import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
 // Other imports
 import axios from "axios";
 import mapConfig from "./data/config.json";
 import LoadingDialog from "./components/LoadingDialog"
+import store from "./store"
 
 
 const CustomLoadingModal = () => (<LoadingDialog />)
@@ -26,18 +24,6 @@ const KeplerGl = injectComponents([
   [AddDataButtonFactory, customDataBtnFactory]
 ])
 
-const customKeplerGlReducer = keplerGlReducer.initialState({
-  uiState: {
-    // Hide side panel when mounted
-    activeSidePanel: null
-  }
-})
-
-const reducers = combineReducers({
-  keplerGl: customKeplerGlReducer
-});
-
-const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
 
 const Map = () => {
   const [regionsData, setRegionsData] = useState([]);
