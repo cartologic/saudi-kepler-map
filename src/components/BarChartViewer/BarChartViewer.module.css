@@ -1,0 +1,15 @@
+.BarChartLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BarChart {
+  width: 280px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.BarChart:last-child {
+  margin-bottom: 20px;
+}

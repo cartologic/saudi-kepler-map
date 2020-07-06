@@ -4,6 +4,7 @@ import { CenterFlexbox } from "kepler.gl/dist/components/common/styled-component
 import { Layers } from "kepler.gl/dist/components/common/icons";
 import PropTypes from "prop-types";
 import { parseFieldValue } from "kepler.gl/dist/utils/data-utils";
+import BarChartViewer from "../BarChartViewer/BarChartViewer";
 
 
 export const StyledLayerName = styled(CenterFlexbox)`
@@ -92,8 +93,21 @@ const CellInfo = ({ data, layer }) => {
   );
 };
 
+const DisplayGraphStatistics = ({ fieldsToShow, fields, data }) => {
+  if (fieldsToShow.includes("region_n_1")) {
+    let field = fields.find((f) => f.name === "region_n_1");
+    const valueIdx = field.tableFieldIndex - 1;
+    const displayValue = parseFieldValue(data[valueIdx], field.type);
+
+    return <BarChartViewer regionName={displayValue} />;
+  } 
+  else {
+    // If there's any layer other than Saudi Regions.
+    return null;
+  }
+};
+
 const CustomLayerHoverInfo = (props) => {
-  console.log(props)
   const { data, layer } = props;
 
   if (!data || !layer) {
@@ -113,7 +127,7 @@ const CustomLayerHoverInfo = (props) => {
           <EntryInfo {...props} />
         )}
       </table>
-      <span>Graphs to be here</span>
+      <DisplayGraphStatistics {...props} />
     </div>
   );
 };
