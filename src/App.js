@@ -11,11 +11,13 @@ import mapConfig from "./data/config.json";
 import store from "./store"
 import { replaceLoadDataModal } from "./factories/load-data-modal"
 import { replaceAddDataBtn } from "./factories/add-data-button"
+import { replaceLayerHoverInfo } from "./factories/layer-hover-info"
 
 
 const KeplerGl = injectComponents([
   replaceLoadDataModal(),
-  replaceAddDataBtn()
+  replaceAddDataBtn(),
+  replaceLayerHoverInfo()
 ])
 
 const Map = () => {
