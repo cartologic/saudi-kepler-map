@@ -1,4 +1,5 @@
 node_modules
+site
 npm-debug.log
 Dockerfile*
 docker-compose*
