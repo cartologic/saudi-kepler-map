@@ -1,9 +1,7 @@
-import React from "react"
-import LoadingDialog from "../components/LoadingDialog"
+import CustomLoadDataModal from "../components/CustomLoadDataModal"
 import { LoadDataModalFactory } from "kepler.gl/components"
 
 
-const CustomLoadDataModal = () => (<LoadingDialog />)
 const customLoadDataModalFactory = () => CustomLoadDataModal;
 
 export function replaceLoadDataModal() {
