@@ -249,3 +249,6 @@ function App() {
 
 export default App;
 ```
+
+!!! info
+    For more information, see Kepler's [:material-github: Github repository](https://github.com/keplergl/kepler.gl) and [:material-file-document: documentation](https://docs.kepler.gl/).
