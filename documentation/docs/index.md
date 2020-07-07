@@ -1,12 +1,12 @@
 # Building Map app with Kepler.gl
 
-## Introduction
+## :material-chevron-right-circle: Introduction
 
 In this guide, you shall learn how to build and visualize a large amount of location data in your browser using [kepler.gl](https://kepler.gl/) and [ReactJS](https://reactjs.org/).
 
 Kepler.gl is designed for geospatial data analysis. It allows technical and non-technical audiences to visualize trends in a city or region.
 
-### :material-chevron-right-circle: Live Samples:
+### :material-buffer: Live Samples:
 
 [![Saudi Kepler's map](imgs/saudi_kepler_map.png "Go to Saudi Kepler's map")](http://mapapps.cloud:7070/)
 
