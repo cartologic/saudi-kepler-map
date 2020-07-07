@@ -13,3 +13,6 @@ Kepler.gl is designed for geospatial data analysis. It allows technical and non-
 [![New York City Population](imgs/us_instance.png "Go to New York City Population")](https://kepler.gl/demo/nyc_census)
 
 You will be able to perform data analysis in Kepler.gl by adding data to a map, fetching layers from a web service (e.g. [GeoServer](http://geoserver.org/)), adding filters, and more cool features to explore.
+
+!!! tip
+    It's highly recommended before going through how to use Kepler.gl in ReactJs, to explore and interact with [Kepler.gl's demo](https://kepler.gl/demo). Use one of the samples that are available to be used and add it to the map.
