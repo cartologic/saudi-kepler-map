@@ -140,11 +140,11 @@ const Map = () => {
     
     return (
       <KeplerGl
-        id="covid"
+        id="myId"
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
         width={window.innerWidth}
         height={window.innerHeight}
-        appName="Kepler | TestApp"
+        appName="Kepler | My App"
       />
     )
 }
@@ -220,8 +220,8 @@ const Map = () => {
                     keepExistingConfig: false
                 },
                 info: {
-                  title: 'Taro and Blue',
-                  description: 'This is my map'
+                    title: 'Taro and Blue',
+                    description: 'This is my map'
                 },
                 config: sampleConfig
             })
@@ -230,7 +230,7 @@ const Map = () => {
     
     return (
         <KeplerGl
-            id="covid"
+            id="myId"
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
             width={window.innerWidth}
             height={window.innerHeight}
