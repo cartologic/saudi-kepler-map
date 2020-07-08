@@ -1,0 +1,43 @@
+# Project information
+site_name: Kepler | How to create Map app
+site_description: A helpful guide to illustrate how to make a map app like Saudi Map with Kepler.gl.
+site_author: Cartologic
+site_url: http://mapapps.cloud:7070/
+
+# Repository
+repo_name: cartologic/saudi-kepler-map
+repo_url: https://github.com/cartologic/saudi-kepler-map
+
+# Copyright
+copyright: Copyright &copy; Cartologic | 2020
+
+# Configuration
+theme:
+  name: material
+  palette:
+    primary: blue grey
+    accent: teal
+  font:
+    text: Ubuntu
+    code: Ubuntu Mono
+
+extra_css:
+  - css/custom.css
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+nav:
+  - Introduction: index.md
+  - Installation and Requirements: installation.md
+  - Integrate Kepler into React: integrateKepler.md
+  - Fetch and display data on map: display-data-on-map.md
+  - Additional tweaks and customizations: additional-tweaks.md
