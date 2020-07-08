@@ -40,9 +40,9 @@ export default App;
 
 ### **2. Install Kepler.gl**
 
-- Install kepler.gl with its dependencies.
+- Install kepler.gl `2.2.0` with its dependencies.
 ```shell
-npm install --save kepler.gl react-palm redux react-redux styled-components
+npm install --save kepler.gl@2.2.0 react-palm redux react-redux styled-components prop-types
 ```
 - Kepler.gl is built upon [mapbox](https://www.mapbox.com/) so, you will need to create a [Mapbox Access Token](https://docs.mapbox.com/help/glossary/access-token/) to use it.
 
