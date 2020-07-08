@@ -6,6 +6,10 @@ In the previous section, we have loaded a dummy data to the map into kepler's ac
 
 For this demonstration, we shall use two layers, [COVID-19 Cases In Saudi Arabia Regions](http://datagovsa.mapapps.cloud/layers/geonode_data:geonode:r) and [COVID-19 Cases In Saudi Arabia Governorates](http://datagovsa.mapapps.cloud/layers/geonode_data:geonode:sagov).
 
+* **COVID-19 Cases In Saudi Arabia Regions** includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
+
+* **COVID-19 Cases In Saudi Arabia Governorates** includes the same statistics about COVID-19 but for each governorate located in a specific region.
+
 !!! tip
     You can explore more layers available at [Saudi Open Data Portal](http://datagovsa.mapapps.cloud/).
 
