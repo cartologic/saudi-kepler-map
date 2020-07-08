@@ -39,3 +39,4 @@ nav:
   - Introduction: index.md
   - Installation and Requirements: installation.md
   - Integrate Kepler into React: integrateKepler.md
+  - Fetch and display data on map: display-data-on-map.md

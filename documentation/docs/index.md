@@ -1,4 +1,4 @@
-# Building Map app with Kepler.gl
+# Building a Map app with Kepler.gl
 
 ## :material-chevron-right-circle: Introduction
 
