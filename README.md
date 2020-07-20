@@ -3,9 +3,9 @@
 [![Saudi Kepler's map](docs/imgs/saudi_kepler_map.png "Go to Saudi Kepler's map")](http://mapapps.cloud:7070/)
 
 This is a react-based map web app built with [Kepler.gl](http://kepler.gl/). It visualizes the data of two layers:
-1. [COVID-19 Cases In Saudi Arabia Regions](http://datagovsa.mapapps.cloud/layers/geonode_data:geonode:r) that includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
+1. [COVID-19 Cases In Saudi Arabia Regions](http://mapsaudi.com/layers/geonode_data:geonode:r) that includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
 
-2. [COVID-19 Cases In Saudi Arabia Governorates](http://datagovsa.mapapps.cloud/layers/geonode_data:geonode:sagov) that includes the same statistics about COVID-19 but for each governorate located in a specific region.
+2. [COVID-19 Cases In Saudi Arabia Governorates](http://mapsaudi.com/layers/geonode_data:geonode:sagov) that includes the same statistics about COVID-19 but for each governorate located in a specific region.
 
 Check a [live demo](http://mapapps.cloud:7070/) of the app.
 

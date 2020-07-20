@@ -402,7 +402,7 @@ In this component, we shall fetch the data and import a **BarChart** component f
 - Navigate to `src/components/`, create a directory called `BarChartViewer` and inside it create a javascript file called `BarChartViewer.js`.
 
 - In order to get the daily recording of cases, we will use a third layer called [Covid-19 Cases Hosted View In Saudi Arabia
-](http://datagovsa.mapapps.cloud/layers/geonode_data:geonode:hostedview) as a GeoJSON format. This data holds a timeline day-by-day recording of COVID-19 cases for each Saudi region.
+](http://mapsaudi.com/layers/geonode_data:geonode:hostedview) as a GeoJSON format. This data holds a timeline day-by-day recording of COVID-19 cases for each Saudi region.
 
 !!! note
     As usual, navigate to the layer URL, and click on `Download Layer` button, right-click on `GeoJSON` format and copy link address.
@@ -424,7 +424,7 @@ class BarChartViewer extends Component {
     }
 
     componentDidMount() {
-        axois.get("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A3857&outputFormat=json&service=WFS&srs=EPSG%3A3857&request=GetFeature&typename=geonode%3Ahostedview&version=1.0.0")
+        axois.get("http://mapsaudi.com/geoserver/ows?srsName=EPSG%3A3857&outputFormat=json&service=WFS&srs=EPSG%3A3857&request=GetFeature&typename=geonode%3Ahostedview&version=1.0.0")
         .then((response) => {
             this.setState({
                 saudiData: response.data.features,
@@ -796,7 +796,7 @@ class BarChartViewer extends Component {
     }
 
     componentDidMount() {
-        axois.get("http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A3857&outputFormat=json&service=WFS&srs=EPSG%3A3857&request=GetFeature&typename=geonode%3Ahostedview&version=1.0.0")
+        axois.get("http://mapsaudi.com/geoserver/ows?srsName=EPSG%3A3857&outputFormat=json&service=WFS&srs=EPSG%3A3857&request=GetFeature&typename=geonode%3Ahostedview&version=1.0.0")
         .then((response) => {
             this.setState({
                 saudiData: response.data.features,

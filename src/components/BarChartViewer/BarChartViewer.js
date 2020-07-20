@@ -17,7 +17,7 @@ class BarChartViewer extends Component {
   componentDidMount() {
     axois
       .get(
-        "http://datagovsa.mapapps.cloud/geoserver/ows?srsName=EPSG%3A3857&outputFormat=json&service=WFS&srs=EPSG%3A3857&request=GetFeature&typename=geonode%3Ahostedview&version=1.0.0"
+        "http://mapsaudi.com/geoserver/ows?srsName=EPSG%3A3857&outputFormat=json&service=WFS&srs=EPSG%3A3857&request=GetFeature&typename=geonode%3Ahostedview&version=1.0.0"
       )
       .then((response) => {
         this.setState({
