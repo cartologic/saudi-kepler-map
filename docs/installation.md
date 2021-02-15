@@ -2,7 +2,7 @@
 
 ## :material-chevron-right-circle: Installation and Requirements
 
-In order to make a map app like the [Saudi Kepler's map](http://mapapps.cloud:7070/) that is mentioned in the introduction section, you need to install some requirements as follows.
+In order to make a map app like the [Saudi Kepler's map](http://kepler-covid.mapsaudi.com/) that is mentioned in the introduction section, you need to install some requirements as follows.
 
 ### **1. Install ReactJS**
 - Install **Node > 10.15.0** from the their [official website](https://nodejs.org/en/) on your machine.
