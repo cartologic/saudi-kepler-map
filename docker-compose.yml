@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     ports: 
       - "7070:80"
+    restart: unless-stopped
     volumes: 
       - ".:/app"
       - "/app/node_modules"
