@@ -4,7 +4,7 @@
 
 In the previous section, we have loaded a dummy data to the map into kepler's action, `addDataToMap`. Now, we will fetch a real geospatial data from a remote server, [GeoServer](http://geoserver.org/) to be specific, configure it with some styles and filters, and load it to the map.
 
-For this demonstration, we shall use two layers, [COVID-19 Cases In Saudi Arabia Regions](http://mapsaudi.com/layers/geonode_data:geonode:r) and [COVID-19 Cases In Saudi Arabia Governorates](http://mapsaudi.com/layers/geonode_data:geonode:sagov).
+For this demonstration, we shall use two layers, [COVID-19 Cases In Saudi Arabia Regions](http://mapsaudi.com/layers/geonode_data:geonode:covidbyregion) and [COVID-19 Cases In Saudi Arabia Governorates](http://mapsaudi.com/layers/geonode_data:geonode:sagov).
 
 * **COVID-19 Cases In Saudi Arabia Regions** includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
 
@@ -95,7 +95,7 @@ const Map = () => {
 !!! note
     You will need to get the data from an API endpoint as GeoJSON or CSV format. These are the [supported formats](https://docs.kepler.gl/docs/user-guides/b-kepler-gl-workflow/a-add-data-to-the-map#supported-file-formats) by kepler.gl.
 
-- To get the GeoJSON version of the [Regions](http://mapsaudi.com/layers/geonode_data:geonode:r) and [Governorates](http://mapsaudi.com/layers/geonode_data:geonode:sagov) layers, navigate to each one URL, and click on `Download Layer` button, right-click on `GeoJSON` format and copy link address.
+- To get the GeoJSON version of the [Regions](http://mapsaudi.com/layers/geonode_data:geonode:covidbyregion) and [Governorates](http://mapsaudi.com/layers/geonode_data:geonode:sagov) layers, navigate to each one URL, and click on `Download Layer` button, right-click on `GeoJSON` format and copy link address.
 
 ![Download layer as GeoJSON](imgs/displayRemoteData/fetch_layer.png)
 
