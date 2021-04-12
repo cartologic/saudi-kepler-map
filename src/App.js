@@ -8,6 +8,7 @@ import Processors from "kepler.gl/processors"
 // Other imports
 import axios from "axios";
 import mapConfig from "./configurations/mapConfig.json";
+import config from "./configurations/config.json";
 import store from "./store"
 import { replaceLoadDataModal } from "./factories/load-data-modal"
 import { replaceAddDataBtn } from "./factories/add-data-button"
@@ -28,9 +29,30 @@ const Map = () => {
 
   // Fetch Saudi regions & governates data
   useEffect(() => {
-    const requestregions = axios.get("http://mapsaudi.com/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0")
+    const requestParams = {
+      srsName: "EPSG:4326",
+      outputFormat: "json",
+      service: "WFS",
+      srs: "EPSG:4326",
+      request: "GetFeature",
+      version: "1.0.0"
+    };
+
+    const { covidRegions, covidGovernorates } = config && config.layersNames;
+
+    const requestregions = axios.get(`${config.SiteURL}/geoserver/ows`, {
+      params: {
+        ...requestParams,
+        typename: covidRegions
+      }
+    });
     
-    const requestGovernates = axios.get("http://mapsaudi.com/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Asagov&version=1.0.0")
+    const requestGovernates = axios.get(`${config.SiteURL}/geoserver/ows`, {
+      params: {
+        ...requestParams,
+        typename: covidGovernorates
+      }
+    });
 
     axios.all([requestregions, requestGovernates])
     .then(axios.spread((...responses) => {
@@ -44,6 +66,9 @@ const Map = () => {
       setGovernatesData(validGovernatesData)
       }
     ))
+    .catch(error => {
+      console.log(error);
+    });
   }, [])
 
 
