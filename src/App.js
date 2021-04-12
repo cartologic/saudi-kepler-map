@@ -7,7 +7,7 @@ import { addDataToMap, setExportData } from "kepler.gl/actions"
 import Processors from "kepler.gl/processors"
 // Other imports
 import axios from "axios";
-import mapConfig from "./data/config.json";
+import mapConfig from "./configurations/mapConfig.json";
 import store from "./store"
 import { replaceLoadDataModal } from "./factories/load-data-modal"
 import { replaceAddDataBtn } from "./factories/add-data-button"
