@@ -12,21 +12,21 @@ class BarChart extends Component {
     let regionValues = [];
     // 1. Filter data by region
     regionValues = this.props.data.filter(
-      (d) => d.properties.RegionNa_1 === regionName
+      (d) => d.properties.regionna_1 === regionName
     );
 
     // 2. Sorting filtered by region data
     regionValues = regionValues
       .slice()
       .sort((a, b) =>
-        d3.ascending(a.properties.Reportdt, b.properties.Reportdt)
+        d3.ascending(a.properties.reportdt, b.properties.reportdt)
       );
 
     // 3. Format the date to be yyyy-mm-dd instead of the current
     const labelDates = regionValues.map((d) =>
-      d.properties.Reportdt.slice(0, 10)
+      d.properties.reportdt.slice(0, 10)
     );
-    regionValues.map((d, i) => (d.properties.Reportdt = labelDates[i]));
+    regionValues.map((d, i) => (d.properties.reportdt = labelDates[i]));
 
     // 4. Create total cases for each day. The output should be something like this:
     // date: Array of dates, totalCases: Array of cases as each case corresponding to each date index.
@@ -57,10 +57,10 @@ class BarChart extends Component {
     let sumCasesforDate = 0;
 
     for (let i = 0; i < data.length - 1; i++) {
-      if (data[i + 1].properties.Reportdt !== data[i].properties.Reportdt) {
+      if (data[i + 1].properties.reportdt !== data[i].properties.reportdt) {
         if (
           data[i - 1] &&
-          data[i].properties.Reportdt === data[i - 1].properties.Reportdt
+          data[i].properties.reportdt === data[i - 1].properties.reportdt
         ) {
           sumCasesforDate = sumCasesforDate + data[i].properties[caseType];
           validCases.push(sumCasesforDate);

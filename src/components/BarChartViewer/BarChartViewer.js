@@ -36,17 +36,17 @@ class BarChartViewer extends Component {
             <BarChart
               data={saudiData}
               regionName={this.props.regionName}
-              caseType="Confirmed"
+              caseType="confirmed"
             />
             <BarChart
               data={saudiData}
               regionName={this.props.regionName}
-              caseType="Deaths"
+              caseType="deaths"
             />
             <BarChart
               data={saudiData}
               regionName={this.props.regionName}
-              caseType="Tested"
+              caseType="tested"
             />
           </div>
         ) : (
