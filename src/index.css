@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.errorSection {
+  text-align: center;
+}
+
+.errorSection p {
+  color: red;
+}

@@ -1,5 +1,5 @@
 // React and Redux
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import { Provider, useDispatch } from "react-redux"
 // Kepler required libraries
 import { injectComponents } from "kepler.gl/components"
@@ -25,6 +25,7 @@ const Map = () => {
   const [regionsData, setRegionsData] = useState([]);
   const [governatesData, setGovernatesData] = useState([]);
   const [mapUpdated, setMapUpdated] = useState(false);
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   // Fetch Saudi regions & governates data
@@ -67,10 +68,18 @@ const Map = () => {
       }
     ))
     .catch(error => {
-      console.log(error);
+      setError(error);
     });
   }, [])
 
+  const errorFallback = error => {
+    return (
+        <div role="alert" className="errorSection">
+            <h1>Something went wrong!</h1>
+            <p>{error.message}</p>
+        </div>
+    );
+  };
 
   // Add Saudi regions & governates to Kepler's map
   useEffect(() => {
@@ -106,14 +115,21 @@ const Map = () => {
   }, [dispatch, regionsData, governatesData])
 
   return (
-    mapUpdated ? <KeplerGl
-      id="covid"
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
-      width={window.innerWidth}
-      height={window.innerHeight}
-      appName="Kepler | COVID-19 KSA"
-      version="1.0"
-    /> : <h1> </h1>
+    error ? (
+      errorFallback(error)
+    ):(
+      mapUpdated ? (
+      <KeplerGl
+        id="covid"
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API}
+        width={window.innerWidth}
+        height={window.innerHeight}
+        appName="Kepler | COVID-19 KSA"
+      />
+      ):(
+        <Fragment/>
+      )
+    )
   )
 }
 
