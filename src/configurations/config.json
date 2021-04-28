@@ -1,5 +1,5 @@
 {
-  "SiteURL": "http://mapsaudi.com",
+  "SiteURL": "https://mapsaudi.com",
   "layersNames": {
     "covidRegions": "geonode:covidbyregion",
     "covidGovernorates": "geonode:sagov",

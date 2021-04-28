@@ -2,7 +2,7 @@
 site_name: Kepler | How to create Map app
 site_description: A helpful guide to illustrate how to make a map app like Saudi Map with Kepler.gl.
 site_author: Cartologic
-site_url: http://kepler-covid.mapsaudi.com/
+site_url: https://kepler-covid.mapsaudi.com/
 
 # Repository
 repo_name: cartologic/saudi-kepler-map

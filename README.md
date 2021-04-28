@@ -1,11 +1,11 @@
-# Saudi COVID-19 map using [Kepler.gl](https://kepler.gl/) | [Live demo](http://kepler-covid.mapsaudi.com/)
+# Saudi COVID-19 map using [Kepler.gl](https://kepler.gl/) | [Live demo](https://kepler-covid.mapsaudi.com/)
 
-[![Saudi Kepler's map](docs/imgs/saudi_kepler_map.png "Go to Saudi Kepler's map")](http://kepler-covid.mapsaudi.com/)
+[![Saudi Kepler's map](docs/imgs/saudi_kepler_map.png "Go to Saudi Kepler's map")](https://kepler-covid.mapsaudi.com/)
 
-This is a react-based map web app built with [Kepler.gl](http://kepler.gl/). It visualizes the data of two layers:
-1. [COVID-19 Cases In Saudi Arabia Regions](http://mapsaudi.com/layers/geonode_data:geonode:covidbyregion) that includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
+This is a react-based map web app built with [Kepler.gl](https://kepler.gl/). It visualizes the data of two layers:
+1. [COVID-19 Cases In Saudi Arabia Regions](https://mapsaudi.com/layers/geonode_data:geonode:covidbyregion) that includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
 
-2. [COVID-19 Cases In Saudi Arabia Governorates](http://mapsaudi.com/layers/geonode_data:geonode:sagov) that includes the same statistics about COVID-19 but for each governorate located in a specific region.
+2. [COVID-19 Cases In Saudi Arabia Governorates](https://mapsaudi.com/layers/geonode_data:geonode:sagov) that includes the same statistics about COVID-19 but for each governorate located in a specific region.
 
 Check a [live demo](http://kepler-covid.mapsaudi.com/) of the app.
 

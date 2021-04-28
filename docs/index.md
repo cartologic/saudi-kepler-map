@@ -8,7 +8,7 @@ Kepler.gl is designed for geospatial data analysis. It allows technical and non-
 
 ### :material-buffer: Live Samples:
 
-[![Saudi Kepler's map](imgs/saudi_kepler_map.png "Go to Saudi Kepler's map")](http://kepler-covid.mapsaudi.com/)
+[![Saudi Kepler's map](imgs/saudi_kepler_map.png "Go to Saudi Kepler's map")](https://kepler-covid.mapsaudi.com/)
 
 [![New York City Population](imgs/us_instance.png "Go to New York City Population")](https://kepler.gl/demo/nyc_census)
 
