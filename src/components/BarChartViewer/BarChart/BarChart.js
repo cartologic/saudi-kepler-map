@@ -12,27 +12,36 @@ class BarChart extends Component {
     let regionValues = [];
     // 1. Filter data by region
     regionValues = this.props.data.filter(
-      (d) => d.properties.regionna_1 === regionName
+      (d) => {
+        return d.properties.RegionName_EN ? (
+          d.properties.RegionName_EN === regionName
+        ) : (
+          d.properties.regionname_en === regionName
+        )
+      } 
     );
+
+    // To fix the usually change of date property to lowercase/uppercase format.
+    const REPORTED_DATE = regionValues[0].properties.hasOwnProperty('Reportdt') ? 'Reportdt' : 'reportdt'
 
     // 2. Sorting filtered by region data
     regionValues = regionValues
       .slice()
       .sort((a, b) =>
-        d3.ascending(a.properties.reportdt, b.properties.reportdt)
+        d3.ascending(a.properties[REPORTED_DATE], b.properties[REPORTED_DATE])
       );
 
     // 3. Format the date to be yyyy-mm-dd instead of the current
     const labelDates = regionValues.map((d) =>
-      d.properties.reportdt.slice(0, 10)
+      d.properties[REPORTED_DATE].slice(0, 10)
     );
-    regionValues.map((d, i) => (d.properties.reportdt = labelDates[i]));
+    regionValues.map((d, i) => (d.properties[REPORTED_DATE] = labelDates[i]));
 
     // 4. Create total cases for each day. The output should be something like this:
     // date: Array of dates, totalCases: Array of cases as each case corresponding to each date index.
     let totalDatesCases = {
       dates: this.removeDuplicateDates(labelDates),
-      totalCases: this.generateValidCases(regionValues, this.props.caseType),
+      totalCases: this.generateValidCases(regionValues, this.props.caseType, REPORTED_DATE),
     };
     return totalDatesCases;
   };
@@ -52,15 +61,15 @@ class BarChart extends Component {
     return normalDates.concat(duplicateDates);
   };
 
-  generateValidCases = (data, caseType) => {
+  generateValidCases = (data, caseType, reportedDate) => {
     let validCases = [];
     let sumCasesforDate = 0;
 
     for (let i = 0; i < data.length - 1; i++) {
-      if (data[i + 1].properties.reportdt !== data[i].properties.reportdt) {
+      if (data[i + 1].properties[reportedDate] !== data[i].properties[reportedDate]) {
         if (
           data[i - 1] &&
-          data[i].properties.reportdt === data[i - 1].properties.reportdt
+          data[i].properties[reportedDate] === data[i - 1].properties[reportedDate]
         ) {
           sumCasesforDate = sumCasesforDate + data[i].properties[caseType];
           validCases.push(sumCasesforDate);

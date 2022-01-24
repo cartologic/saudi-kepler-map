@@ -41,17 +41,17 @@ const BarChartViewer = props => {
             <BarChart
               data={saudiData}
               regionName={props.regionName}
-              caseType="confirmed"
+              caseType="Confirmed"
             />
             <BarChart
               data={saudiData}
               regionName={props.regionName}
-              caseType="deaths"
+              caseType="Deaths"
             />
             <BarChart
               data={saudiData}
               regionName={props.regionName}
-              caseType="tested"
+              caseType="Tested"
             />
           </div>
         ) : (
