@@ -4,14 +4,14 @@
 
 In the previous section, we have loaded a dummy data to the map into kepler's action, `addDataToMap`. Now, we will fetch a real geospatial data from a remote server, [GeoServer](http://geoserver.org/) to be specific, configure it with some styles and filters, and load it to the map.
 
-For this demonstration, we shall use two layers, [COVID-19 Cases In Saudi Arabia Regions](https://mapsaudi.com/layers/geonode_data:geonode:covidbyregion) and [COVID-19 Cases In Saudi Arabia Governorates](https://mapsaudi.com/layers/geonode_data:geonode:sagov).
+For this demonstration, we shall use two layers, [COVID-19 Cases In Saudi Arabia Regions](https://geoportal.mapsaudi.com/layers/geonode_data:geonode:covidbyregion) and [COVID-19 Cases In Saudi Arabia Governorates](https://geoportal.mapsaudi.com/layers/geonode_data:geonode:sagov).
 
 * **COVID-19 Cases In Saudi Arabia Regions** includes statistics about the total confirmed, deaths, recovered, and active COVID-19 cases for each region.
 
 * **COVID-19 Cases In Saudi Arabia Governorates** includes the same statistics about COVID-19 but for each governorate located in a specific region.
 
 !!! tip
-    You can explore more layers available at [Saudi Open Data Portal](https://mapsaudi.com/).
+    You can explore more layers available at [Saudi Open Data Portal](https://geoportal.mapsaudi.com/).
 
 !!! note
     All the mentioned code below should be implemented inside `App.js` file alongside the final code in the previous step.
@@ -95,16 +95,16 @@ const Map = () => {
 !!! note
     You will need to get the data from an API endpoint as GeoJSON or CSV format. These are the [supported formats](https://docs.kepler.gl/docs/user-guides/b-kepler-gl-workflow/a-add-data-to-the-map#supported-file-formats) by kepler.gl.
 
-- To get the GeoJSON version of the [Regions](https://mapsaudi.com/layers/geonode_data:geonode:covidbyregion) and [Governorates](https://mapsaudi.com/layers/geonode_data:geonode:sagov) layers, navigate to each one URL, and click on `Download Layer` button, right-click on `GeoJSON` format and copy link address.
+- To get the GeoJSON version of the [Regions](https://geoportal.mapsaudi.com/layers/geonode_data:geonode:covidbyregion) and [Governorates](https://geoportal.mapsaudi.com/layers/geonode_data:geonode:sagov) layers, navigate to each one URL, and click on `Download Layer` button, right-click on `GeoJSON` format and copy link address.
 
 ![Download layer as GeoJSON](imgs/displayRemoteData/fetch_layer.png)
 
 ```javascript
 // Inside Map component
 useEffect(() => {
-    const requestregions = axios.get("https://mapsaudi.com/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0")
+    const requestregions = axios.get("https://geoportal.mapsaudi.com/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Ar&version=1.0.0")
     
-    const requestGovernates = axios.get("https://mapsaudi.com/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Asagov&version=1.0.0")
+    const requestGovernates = axios.get("https://geoportal.mapsaudi.com/geoserver/ows?srsName=EPSG%3A4326&outputFormat=json&service=WFS&srs=EPSG%3A4326&request=GetFeature&typename=geonode%3Asagov&version=1.0.0")
 
     axios.all([requestregions, requestGovernates])
     .then(axios.spread((...responses) => {
