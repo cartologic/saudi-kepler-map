@@ -1,5 +1,5 @@
 {
-  "SiteURL": "https://geoportal.mapsaudi.com",
+  "SiteURL": "https://geoportal.tabaqat.net",
   "layersNames": {
     "covidRegions": "geonode:covidbyregion",
     "covidGovernorates": "geonode:sagov",
